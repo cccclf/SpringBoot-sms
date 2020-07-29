@@ -13,7 +13,7 @@ public class DepartmentDao {
 
     //模拟数据库中的数据
 
-    private static Map<Integer, Department> departments = null;
+    private static Map<Integer, Department> departments;
 
     static {
         departments = new HashMap<Integer, Department>();//创建一个部门表

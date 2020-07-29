@@ -13,7 +13,7 @@ import java.util.Map;
 @Repository
 public class EmployeeDao {
     //模拟数据库中的数据
-    private static Map<Integer, Employee> employees = null;
+    private static Map<Integer, Employee> employees;
 
     @Autowired
     private DepartmentDao departmentDao;
