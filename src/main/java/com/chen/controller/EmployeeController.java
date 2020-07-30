@@ -30,6 +30,7 @@ public class EmployeeController {
         return "/emps/list";
     }
 
+    //增加员工
     @GetMapping("/emp")
     public String toAddPage(Model model){
         //查处所有部门的信息
@@ -37,17 +38,15 @@ public class EmployeeController {
         model.addAttribute("departments",departments);
         return "emps/add";
     }
-
     @PostMapping("/emp")
     public String addEmp(Employee employee){
         //添加的操作
-        System.out.println("debug====>"+employee);
         employeeDao.save(employee);
         return "redirect:/emps";//重定向：url会发生改变
     }
 
-    //点击编辑跳转到员工的修改页面
-    @GetMapping("/emp/{id}")
+    //修改员工信息
+    @GetMapping("/emp/{id}")    //点击编辑跳转到员工的修改页面
     public String toUpdateEmp(@PathVariable("id")Integer id,
                               Model model){
         //查出原来的数据
@@ -59,12 +58,17 @@ public class EmployeeController {
         model.addAttribute("departments",departments);
         return "emps/update";
     }
-
     @PostMapping("/updateEmp")
     public String updateEmp(Employee employee){
         employeeDao.save(employee);
         return "redirect:/emps";
     }
 
+    //删除员工
+    @GetMapping("/delemp/{id}")
+    public String deleteEmp(@PathVariable("id")Integer id){
+        employeeDao.delete(id);
+        return "redirect:/emps";
+    }
 
 }

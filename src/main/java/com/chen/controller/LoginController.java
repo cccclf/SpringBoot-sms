@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
+    //登录
     @RequestMapping("/user/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -25,5 +26,12 @@ public class LoginController {
              model.addAttribute("msg","用户名或者密码错误");
              return "index";
         }
+    }
+
+    //注销
+    @RequestMapping("/user/loginout")
+    public String loginOut(HttpSession session){
+        session.invalidate();
+        return "redirect:/index.html";
     }
 }
